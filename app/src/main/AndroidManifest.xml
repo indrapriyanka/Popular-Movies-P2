@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.shreeniclix.priyanka.popularmoviesapp">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name="com.shreeniclix.priyanka.popularmoviesapp.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <!--UNCOMMENT BELOW LINES -->
+        <activity
+            android:name="com.shreeniclix.priyanka.popularmoviesapp.MainActivity"
+            android:label="Now Playing"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.shreeniclix.priyanka.popularmoviesapp.MovieDetailPage"
+            android:label="@string/movie_details"
+            android:parentActivityName="com.shreeniclix.priyanka.popularmoviesapp.MainActivity"></activity>
+
+        <activity
+            android:name="com.shreeniclix.priyanka.popularmoviesapp.Favorites"
+            android:label="Favorites"
+            android:launchMode="singleTop"
+            android:parentActivityName="com.shreeniclix.priyanka.popularmoviesapp.Favorites" />
+
+        <provider
+            android:name="com.shreeniclix.priyanka.popularmoviesapp.TaskContentProvider"
+            android:authorities="com.shreeniclix.priyanka.popularmoviesapp"
+            android:exported="false" />
+    </application>
+
+</manifest>

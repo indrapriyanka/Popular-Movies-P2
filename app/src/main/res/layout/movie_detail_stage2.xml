@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    android:id="@+id/coordinator_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <!--can be movie name. Title on scrolling and image hidden-->
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleMarginEnd="64dp"
+            app:expandedTitleMarginStart="48dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <!--app:title="Collapsing Toolbar">-->
+
+            <!--backdrop image-->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="400dp">
+            <ImageView
+                android:id="@+id/img_poster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/avatar"
+                app:layout_collapseMode="parallax"
+                android:adjustViewBounds="true"/>
+            </LinearLayout>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nested_Scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            android:clipToPadding="false"
+            >
+
+            <!--ADDED FROM HERE-->
+
+            <LinearLayout
+                android:id="@+id/linearView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/background"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/movie_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:gravity="center"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="10dp"
+                    android:text="TITLE TEXT"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/textColor"
+                    android:textSize="30sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/movie_releasedate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/movie_detail_text_padding_left"
+                        android:paddingTop="@dimen/movie_detail_text_padding_top"
+                        android:text="2015-02-05"
+                        android:textColor="@color/textColor"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/movie_releasedate"
+                        android:paddingLeft="@dimen/movie_detail_text_padding_left"
+                        android:paddingTop="@dimen/movie_detail_text_padding_top"
+                        android:text="120min"
+                        android:textColor="@color/textColor"
+                        android:textSize="14sp"
+                        android:textStyle="bold|italic" />
+
+                    <TextView
+                        android:id="@+id/movie_rating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:paddingLeft="@dimen/movie_detail_text_padding_left"
+                        android:paddingTop="@dimen/movie_detail_text_padding_top"
+                        android:text="7.2/10"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/btnBackground"
+                        android:onClick="addAsFav"
+                        android:text="@string/btn_fav"
+                        android:textColor="@color/textColor"
+                        android:visibility="visible"
+                        android:layout_marginLeft="@dimen/movie_detail_text_padding_left"/>
+
+                    <Button
+                        android:id="@+id/buttonRemoveFav"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/btnBackground"
+                        android:onClick="removeAsFav"
+                        android:text="@string/btn_unfav"
+                        android:textColor="@color/textColor"
+                        android:visibility="visible"
+                        android:layout_marginLeft="@dimen/movie_detail_text_padding_left"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:paddingLeft="@dimen/movie_detail_text_padding_left"
+                    android:paddingRight="20dp"
+                    android:paddingTop="8dp"
+                    android:text="Overview:"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/movie_detail_textSize"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/movie_overview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="@dimen/movie_detail_text_padding_left"
+                    android:paddingRight="20dp"
+                    android:paddingTop="8dp"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:paddingLeft="@dimen/movie_detail_text_padding_left"
+                    android:paddingTop="8dp"
+                    android:text="Trailers: "
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/movie_detail_textSize"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_trailer"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginLeft="@dimen/movie_detail_padding_left_right"
+                    android:layout_marginRight="@dimen/movie_detail_padding_left_right"
+                    android:paddingBottom="8dp"
+                    android:paddingTop="8dp"
+                    android:scrollbarSize="@dimen/movie_detail_padding_left_right"
+                    android:scrollbars="horizontal"></android.support.v7.widget.RecyclerView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="serif"
+                    android:paddingLeft="@dimen/movie_detail_text_padding_left"
+                    android:paddingTop="8dp"
+                    android:text="Reviews:"
+                    android:textColor="@color/textColor"
+                    android:textSize="@dimen/movie_detail_textSize"
+                    android:textStyle="bold" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_review"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/movie_detail_layout_width"
+                    android:paddingLeft="@dimen/movie_detail_text_padding_left"
+                    android:paddingTop="8dp"
+                    ></android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+
+            <!--TILL FROM HERE-->
+
+        </android.support.v4.widget.NestedScrollView>
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+
+</android.support.design.widget.CoordinatorLayout>
